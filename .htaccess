@@ -1,0 +1,12 @@
+Options -Indexes
+DirectoryIndex index.php
+AddDefaultCharset UTF-8
+RewriteEngine On
+
+RewriteRule ^(?:app|config|database|deploy|scripts|tests|\.git|\.agents|\.codex|\.aws)(?:/|$) - [F,L]
+RewriteRule ^(?:AGENTS|README)\.md$ - [F,L]
+# Uploaded group icons are static images; never execute scripts from the upload directory.
+RewriteRule ^assets/uploads/.*\.(?:php|phtml|phar|phps|pl|py|cgi|asp|aspx|jsp|s?html?)$ - [F,L]
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>

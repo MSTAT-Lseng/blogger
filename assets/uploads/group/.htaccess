@@ -1,0 +1,5 @@
+Options -Indexes
+# Uploaded group icons are static images: never serve or execute scripts from this directory.
+<FilesMatch "\.(?:php|phtml|phar|phps|pl|py|cgi|asp|aspx|jsp|s?html?)$">
+    Require all denied
+</FilesMatch>

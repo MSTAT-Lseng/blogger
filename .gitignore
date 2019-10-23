@@ -1,0 +1,7 @@
+config/local.php
+*.log
+.DS_Store
+# Runtime uploads (group icons, user avatars); keep the shipped hardening files.
+assets/uploads/*/*
+!assets/uploads/*/.gitkeep
+!assets/uploads/*/.htaccess

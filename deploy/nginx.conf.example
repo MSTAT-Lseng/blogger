@@ -1,0 +1,17 @@
+# Insert these locations inside the site's server block.
+# For /blogger deployments prefix all locations and rewrite targets with /blogger.
+index index.php;
+charset utf-8;
+location ~ ^/(app|config|database|deploy|scripts|tests)(/|$) { deny all; }
+location ~ /\.(git|agents|codex|aws|ht) { deny all; }
+location ~ ^/(AGENTS|README)\.md$ { deny all; }
+# Uploaded group icons are static images; never execute scripts from the upload directory.
+location ~ ^/assets/uploads/.*\.(php|phtml|phar|pl|py|cgi|asp|aspx|jsp|s?html?)$ { deny all; }
+location / { try_files $uri $uri/ /index.php?$query_string; }
+# PHPStudy's PHP-FPM location must be present in the parent server block:
+# location ~ \.php$ {
+#     try_files $uri =404;
+#     include fastcgi_params;
+#     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+#     fastcgi_pass 127.0.0.1:9000; # Use the actual PHPStudy upstream.
+# }
