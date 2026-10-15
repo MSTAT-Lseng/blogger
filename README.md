@@ -1,4 +1,4 @@
-# Blogger / Bangumi 小组论坛
+# blogger
 
 一个不依赖任何 PHP 框架与 Composer 的**Bangumi 小组讨论论坛的简单实现**。
 
